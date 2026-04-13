@@ -51,6 +51,22 @@ class TicketWebController extends Controller
             ->with('success', 'Ticket actualizado correctamente.');
     }
 
+    // PATCH /tickets/{ticket}/close
+    public function close(Ticket $ticket)
+    {
+        if(!in_array($ticket->status, ['pendiente', 'en curso'])){
+            return redirect()->back()
+                ->with('error', 'No se puede cerrar este ticket');
+        }
+
+        $ticket->status = 'finalizada';
+        $ticket->fecha_resolucion = now();
+        $ticket->save();
+
+        return $this->redirectToIndex()
+            ->with('success', 'Ticket cerrado correctamente');
+    }
+
     // DELETE /tickets/{ticket}
     public function destroy(Ticket $ticket)
     {

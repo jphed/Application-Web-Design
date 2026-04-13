@@ -25,6 +25,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
         Route::resource('tickets', TicketWebController::class);
+        Route::patch('/tickets/{ticket}/close', [TicketWebController::class, 'close'])
+            ->middleware('rol:admin,gerente')
+            ->name('tickets.close');
 
         Route::get('/usuarios', [AdminController::class, 'usuarios'])->name('usuarios.index');
         Route::get('/usuarios/{user}', [AdminController::class, 'verUsuario'])->name('usuarios.show');

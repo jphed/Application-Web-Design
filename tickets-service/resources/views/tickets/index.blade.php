@@ -44,6 +44,13 @@ primero.</a>
  class="btn btn-sm btn-outline-primary">Ver</a>
  <a href="{{ route('admin.tickets.edit',$ticket) }}"
  class="btn btn-sm btn-outline-warning">Editar</a>
+ @if(auth()->user()->rol == 'admin' || auth()->user()->rol == 'gerente')
+ <form action="{{ route('admin.tickets.close', $ticket) }}" method="POST" class="d-inline">
+     @csrf
+     @method('PATCH')
+     <button type="submit" class="btn btn-sm btn-outline-success">Cerrar</button>
+ </form>
+ @endif
  <form action="{{ route('admin.tickets.destroy',$ticket) }}"
 method="POST"
  class="d-inline"
