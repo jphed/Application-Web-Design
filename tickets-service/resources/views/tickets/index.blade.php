@@ -3,7 +3,12 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
  <h2 class="fw-bold"> Tickets de Soporte</h2>
+ <div class="d-flex align-items-center gap-3">
  <span class="text-muted">Total: {{ $tickets->count() }}</span>
+ <a href="{{ route('admin.tickets.create') }}" class="btn btn-primary">
+ <i class="fas fa-plus"></i> Crear Nuevo Ticket
+ </a>
+ </div>
 </div>
 @if($tickets->isEmpty())
  <div class="alert alert-info text-center">

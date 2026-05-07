@@ -8,7 +8,7 @@
  <h5 class="mb-0"> Crear Nuevo Ticket</h5>
  </div>
  <div class="card-body">
- <form action="{{ route('tickets.store') }}" method="POST">
+ <form action="{{ route('admin.tickets.store') }}" method="POST" enctype="multipart/form-data">
  @csrf
  <div class="row g-3">
  <div class="col-md-6">
@@ -98,11 +98,17 @@ Técnico</label>
  <textarea name="comentarios_tecnico"
  class="form-control" rows="2"></textarea>
  </div>
+ <div class="col-12">
+ <label class="form-label fw-semibold">Adjuntar imágenes y documentos</label>
+ <input type="file" name="attachments[]" multiple class="form-control"
+accept="image/*,.pdf,.doc,.docx,.txt,.xls,.xlsx">
+ <small class="text-muted">Máximo 10 MB por archivo. Puedes seleccionar varios.</small>
+ </div>
  </div>
  <div class="mt-4 d-flex gap-2">
  <button type="submit" class="btn btn-success">Guardar
 Ticket</button>
- <a href="{{ route('tickets.index') }}"
+ <a href="{{ route('admin.tickets.index') }}"
  class="btn btn-secondary">Cancelar</a>
  </div>
  </form>

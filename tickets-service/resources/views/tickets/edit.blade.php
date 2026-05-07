@@ -8,7 +8,7 @@
  <h5 class="mb-0"> Editar: {{ $ticket->numero_reporte }}</h5>
  </div>
  <div class="card-body">
- <form action="{{ route('tickets.update',$ticket) }}" method="POST">
+ <form action="{{ route('admin.tickets.update',$ticket) }}" method="POST" enctype="multipart/form-data">
  @csrf
  @method('PUT')
  <div class="row g-3">
@@ -104,11 +104,17 @@ Técnico</label>
  <textarea name="comentarios_tecnico" class="form-control"
 rows="3">{{ $ticket->comentarios_tecnico }}</textarea>
  </div>
+ <div class="col-12">
+ <label class="form-label fw-semibold">Adjuntar imágenes y documentos adicionales</label>
+ <input type="file" name="attachments[]" multiple class="form-control"
+accept="image/*,.pdf,.doc,.docx,.txt,.xls,.xlsx">
+ <small class="text-muted">Máximo 10 MB por archivo. Puedes seleccionar varios.</small>
+ </div>
  </div>
  <div class="mt-4 d-flex gap-2">
  <button type="submit" class="btn btn-warning">Actualizar
 Ticket</button>
- <a href="{{ route('tickets.show',$ticket) }}"
+ <a href="{{ route('admin.tickets.show',$ticket) }}"
  class="btn btn-secondary">Cancelar</a>
  </div>
  </form>

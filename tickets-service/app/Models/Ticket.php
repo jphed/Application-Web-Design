@@ -26,11 +26,18 @@ class Ticket extends Model
         'fecha_resolucion',
         'comentarios_tecnico',
         'status',
+        'ai_analysis',
     ];
 
     protected $casts = [
         'fecha_reporte' => 'datetime',
         'fecha_promesa' => 'datetime',
         'fecha_resolucion' => 'datetime',
+        'ai_analysis' => 'json',
     ];
+
+    public function attachments()
+    {
+        return $this->hasMany(TicketAttachment::class);
+    }
 }

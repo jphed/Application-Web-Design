@@ -38,6 +38,9 @@
  </div>
  </div>
  <div class="d-flex gap-2">
+ <a href="{{ route('admin.tickets.create') }}" class="btn btn-success">
+ <i class="fas fa-plus"></i> Crear Nuevo Ticket
+ </a>
  <a href="{{ route('admin.tickets.index') }}" class="btn btn-primary">
  Ver Todos los Tickets
  </a>
