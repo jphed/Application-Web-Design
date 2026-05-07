@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* Asegura que Tailwind escanee plantillas Vue y Blade (v4) */
+@source "../js/**/*.vue";
+@source "../js/**/*.js";
+@source "../views/**/*.blade.php";
