@@ -68,7 +68,7 @@ onSuccess: () => form.reset(),
 <div v-for="evento in eventos" :key="evento.id" class="bg-slate-900 p-4 rounded-xl border-l-4 border-pink-500 shadow-md">
 <span class="text-xs font-bold uppercase text-pink-500">{{ evento.categoria }}</span>
 <h3 class="text-xl font-bold">{{ evento.nombre }}</h3>
-<p class="text-slate-400 text-sm italic">{{ evento.fecha }}</p>
+<p class="text-slate-400 text-sm italic">{{ new Date(evento.fecha).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' }) }}</p>
 <p class="mt-2 text-slate-300">{{ evento.descripcion }}</p>
 </div>
 <div v-if="eventos.length === 0" class="text-slate-500 italic">No hay eventos... aún.</div>

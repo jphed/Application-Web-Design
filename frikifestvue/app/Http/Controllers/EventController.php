@@ -26,4 +26,16 @@ class EventController extends Controller
         Event::create($data);
         return redirect()->back()->with('success', '¡Evento registrado con éxito, nakama!');
     }
+
+    public function update(Request $request, Event $event) {
+        // Validación a prueba de errores
+        $data = $request->validate([
+            'nombre' => 'required|min:3',
+            'categoria' => 'required',
+            'fecha' => 'required|date',
+            'descripcion' => 'required|min:10',
+        ]);
+        $event->update($data);
+        return redirect()->back()->with('success', '¡Evento actualizado con éxito, nakama!');
+    }
 }
